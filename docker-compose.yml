@@ -1,0 +1,18 @@
+version: '3'
+
+services:
+  node-app:
+    build: .
+    ports:
+      - "3000:3000"
+    env_file:
+      - .env
+    volumes:
+      - .:/app
+    networks:
+      - node_network
+
+networks:
+  node_network:
+    driver: bridge
+
