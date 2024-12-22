@@ -98,3 +98,32 @@ You can use Terraform to provision a Kubernetes cluster in a cloud provider (AWS
 ### Steps for creating the cluster with Terraform:
 Configure the Terraform provider  
 Run **terraform init** and **terraform apply** to create the infrastructure
+
+
+## 5. Logging And monitoring
+# EKS Cluster Logging and Monitoring with CloudWatch
+
+## Enable Cluster Logs in CloudWatch
+
+You can enable Amazon EKS cluster logs for different components (e.g., API server, audit logs, authenticator, scheduler, etc.) to be pushed to CloudWatch. You can enable this when creating the EKS cluster or after the cluster is created.
+
+1. Go to the **EKS console**.
+2. Select your **EKS cluster**.
+3. In the **Logging** section, enable logs for the following:
+   - API Server
+   - Audit
+   - Authenticator
+   - Scheduler
+   - Controller Manager
+4. Once logs are enabled, the logs will be pushed to a **CloudWatch Log Group**.
+
+### OR
+ 
+## Install CloudWatch Agent for Container Logs
+
+To collect logs from your Kubernetes pods (e.g., application logs, system logs), you can install and configure the CloudWatch agent.
+
+1. Deploy the **CloudWatch agent** as a DaemonSet in the EKS cluster.
+2. Configure it to collect logs from your containers by modifying the `cloudwatch-agent-config.json` configuration file.
+3. The logs will be forwarded to **CloudWatch Logs**, where you can monitor and analyze them.
+
